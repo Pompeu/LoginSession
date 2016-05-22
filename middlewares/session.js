@@ -2,17 +2,21 @@
 const User = require('../models/index').User;
 
 function sessionHandler(req, res, next) {
+  // res.locals.csrfToken = req.csrfToken();
+
   if(req.session && req.session.user){
-    User.findOne({email : req.session.user.email})
+    User.findOne({
+      email : req.session.user.email
+    })
     .then(user => {
-      req.user         = user;
-      req.user.password = null;
-      req.session.user = req.user;
-      res.locals.user  = req.user;
-      next();
+      req.user = user.toJSON();
+      delete req.user.password;
+      req.session.user  = req.user;
+      res.locals.user = req.user;
+      return  next();
     });
-  }else {
-    next();
+  } else {
+    return next();
   }
 }
 module.exports = exports = sessionHandler;

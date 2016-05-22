@@ -9,7 +9,7 @@ function userHandler(req, res) {
       if (user) {
         res.render('user-details', {
           title : 'user details',
-          user : user
+          user : user 
         });
       }
     }, err => {
@@ -23,14 +23,14 @@ function userHandler(req, res) {
     createError(res);
   }
 }
-
 module.exports = exports = userHandler;
 
 function createError (res, err) {
+  if (typeof err.code !== undefined && err.code === 11000) {
+    err = 'email in use, plz use outher!'; 
+  }
   res.render('caduser', {
     title : 'cadauser',
     err   : err ||'mail not eq'
   });
 }
-
-

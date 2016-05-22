@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include includes/head %>
   </head>
   <body>
     <h1><%= title %></h1>
+    <% include includes/logout %>
     <% if (typeof user === 'undefined') { %>
-    <a href="login">login</a>
+    <a href="login" class="waves-effect waves-light btn">
+      Login
+    </a>
     <br />
-    <a href="caduser">cadastro</a>
+    <br />
+    <a href="caduser" class="waves-effect waves-light btn">
+      cadastro
+    </a>
+    <br />
     <br />
     <% } %>
-    <% if (typeof user !== 'undefined') { %>
-    <a href="logout">logout</a>
-    <br />
-    <a href="restrict">Veja O segrendo</a>
-    <% } %>
+    <a href="restrict" class="waves-effect waves-light btn">
+      Veja O segrendo
+    </a>
   </body>
 </html>

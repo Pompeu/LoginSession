@@ -1,3 +1,15 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include includes/head %>
+ </head>
+  <body>
+ 
+    <h1><%= message %></h1>
+    <h2><%= error.status %></h2>
+    <pre><%= error.stack %></pre>
+    <a href="login" class="waves-effect waves-light btn">
+      Logar
+    </a>
+  </body>
+</html>

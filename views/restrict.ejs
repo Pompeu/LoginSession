@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include includes/head %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <a href="/">voltar</a>
-    <h1> Area Restrita </h1>
+    <% include includes/logout %>
+    <ul class="collection">
+      <% users.forEach(function(user){ %>
+        <li class="collection-item dismissable">
+          <div>
+            <%=user.email %>
+            <%=user.password%>
+            <a href="remove/<%=user._id %>" class='bnt' >
+              remove
+            </a>
+          </div>
+        </li>
+      <%});%>
+      <a class="btn" href="/">voltar</a>
   </body>
 </html>

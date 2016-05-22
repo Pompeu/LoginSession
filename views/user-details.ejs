@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include includes/head %>
   </head>
   <body>
+    <% include includes/logout %>
     <div>
        <p>
           <%= user.email %>
@@ -12,8 +12,8 @@
        <p>
           <%= user.password %>
        </p>
-       <a href="/">
-          <button type="submit">voltar</button>
+       <a class="btn waves-effect waves-light" href="/">
+         <i class="material-icons right">back</i>
        </a>
     </div>
   </body>
