@@ -2,7 +2,7 @@
 const User = require('../models/index').User;
 
 function userHandler(req, res) {
-  var user = req.body;
+  const user = req.body;
   if(user.password === user.password2){
     delete user.password2;
     User.create(user).then(user => {

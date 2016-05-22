@@ -7,9 +7,10 @@ function loginHandler(req, res) {
   User.findOne({
     email : user.email
   })
-  .then(u => {
-    if(u.password === user.password) {
-      req.session.user = u.toJSON();
+  .then(udb => {
+    if(udb.password === user.password) {
+      req.session.user = udb.toJSON();
+      //importante :P
       delete req.session.user.password;
       res.redirect('/');
     } else {

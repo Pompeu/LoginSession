@@ -2,7 +2,7 @@
 const User = require('../models/index').User;
 
 function sessionHandler(req, res, next) {
-  // res.locals.csrfToken = req.csrfToken();
+  res.locals.csrfToken = req.csrfToken();
 
   if(req.session && req.session.user){
     User.findOne({
@@ -13,7 +13,7 @@ function sessionHandler(req, res, next) {
       delete req.user.password;
       req.session.user  = req.user;
       res.locals.user = req.user;
-      return  next();
+      return next();
     });
   } else {
     return next();
